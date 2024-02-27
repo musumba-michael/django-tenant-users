@@ -24,7 +24,7 @@ def create_public_tenant(
     owner_email,
     is_superuser=False,
     is_staff=False,
-    tenant_extra_data={},
+    tenant_extra_data=None,
     **owner_extra,
 ):
     """Create a public tenant with an owner user.
@@ -43,6 +43,7 @@ def create_public_tenant(
 
     * `Tuple[YourTenantModel, YourDomainModel, YourUserModel]`: A tuple containing the created public tenant, its domain, and the owner user.
     """
+    tenant_extra_data = {} if tenant_extra_data is None else tenant_extra_data
 
     UserModel = get_user_model()
     TenantModel = get_tenant_model()
