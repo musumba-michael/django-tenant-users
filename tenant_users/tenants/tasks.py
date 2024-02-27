@@ -26,7 +26,7 @@ def provision_tenant(
     is_superuser=True,
     tenant_type=None,
     schema_name=None,
-    tenant_extra_data={},
+    tenant_extra_data=None,
 ):
     """Creates a tenant with default roles and permissions.
 
@@ -52,6 +52,7 @@ def provision_tenant(
     * `InactiveError`: If the user passed to the function is inactive.
     * `ExistsError`: If the tenant URL already exists.
     * `SchemaError`: If the tenant type is not valid."""
+    tenant_extra_data = {} if tenant_extra_data is None else tenant_extra_data
 
     tenant = None
 
